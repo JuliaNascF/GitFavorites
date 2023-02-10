@@ -30,6 +30,7 @@ export class Favorites {
                         const userExists = this.entries.find(entry => entry.login === username)
                         if (userExists) {
                                 throw new Error('Usuário já cadastrado')
+                              
                         }
 
                         const user = await GithubUser.search(username)
@@ -78,12 +79,19 @@ export class FavoritesView extends Favorites {
 
         onadd() {
                 const addButton = this.root.querySelector('.search button');
+                const input = this.root.querySelector('.search input')
 
                 addButton.onclick = () => {
 
                         const { value } = this.root.querySelector('.search input')
                         this.add(value)
                 }
+
+                input.addEventListener('keyup', (event) => {
+                        if(event.keyCode===13){
+                                addButton.click()
+                        }
+                })
         }
 
 
@@ -146,7 +154,6 @@ export class FavoritesView extends Favorites {
        <td>
            <button class="remove">Remover</button>
        </td>
-
         
            `
                 return tr
