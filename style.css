@@ -310,7 +310,7 @@ td .remove {
 
 .page-noFavorite {
     
-    width: clamp(37.8%, 100%, 88vw);
+    width: clamp(38%, 1120px, 88vw);
 
     padding: 10rem;
     margin-top: -5rem;
